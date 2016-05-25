@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "tanga_que_extensions"
-  s.version     = "0.0.3"
+  s.version     = "0.0.4"
   s.authors     = ["Peter van Wesep"]
   s.email       = ["tanga.web.consultant@gmail.com"]
   s.homepage    = "https://www.tanga.com"

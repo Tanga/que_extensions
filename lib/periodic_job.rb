@@ -11,19 +11,18 @@ class Que::PeriodicJob < Que::Job
     if start_at.present? && end_at.present?
       @start_at = Time.parse(start_at)
       @end_at   = Time.parse(end_at)
-      @run_again_at = @end_at + self.class::INTERVAL
     else
       @start_at = Time.current
       @end_at   = @start_at + self.class::INTERVAL
-      @run_again_at = @end_at
     end
 
+    @run_again_at = @end_at
     @time_range = @start_at...@end_at
 
     super
 
     args['start_at'] = @end_at
-    args['end_at']   = @run_again_at
+    args['end_at']   = @end_at + self.class::INTERVAL
 
     Que::Migrations.transaction do
       self.class.enqueue(args, run_at: @run_again_at + self.class::DELAY)
