@@ -1,10 +1,3 @@
-require 'que'
-require 'memory_info'
-require 'background_job_logger'
-require 'record_job_status'
-require 'job'
-require 'notify_on_failures'
-
 class Que::PeriodicJob < Que::Job
   INTERVAL = 60
   DELAY = 0
