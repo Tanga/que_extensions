@@ -1,17 +1,15 @@
-require_relative '../lib/periodic_job'
 require 'active_support'
 require 'active_support/core_ext'
-require 'sequel'
 require 'json'
 require 'logger'
 require 'active_record'
+require_relative '../lib/tanga_que_extensions'
 
 ActiveRecord::Base.establish_connection 'postgres://localhost/tanga_dev'
-Que.connection = Sequel.connect('postgres://localhost/tanga_dev')
+Que.connection = ActiveRecord
 
-class QueJobStatus < ActiveRecord::Base
-  self.table_name = :que_job_status
-end
+p QueJobStatus.first
+p QueJob.first
 
 class J < Que::Job
   prepend Que::RecordJobStatus

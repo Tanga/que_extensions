@@ -23,6 +23,7 @@ module Que::RecordJobStatus
   end
 
   def record_job_started
+    QueJobStatus.where(job_id: job_id).delete_all
     QueJobStatus.create!(job_id: job_id, attrs: attrs, status: 'executing')
   end
 
