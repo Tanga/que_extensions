@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    periodic_job (0.0.1)
+      que (= 0.9.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    que (0.9.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  periodic_job!
+
+BUNDLED WITH
+   1.11.2
