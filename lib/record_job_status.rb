@@ -19,7 +19,7 @@ module Que::RecordJobStatus
 
   def record_job_failed(e)
     TangaServices.logger.error(service: 'que_jobs', status: 'error', error: e.to_json)
-    job_scope.update_all(status: 'failed', error: { message: e.message, args: e.as_json })
+    job_scope.update_all(status: 'failed', error: { message: e.message, caller: e.backtrace, args: e.as_json })
   end
 
   def record_job_started
@@ -28,7 +28,11 @@ module Que::RecordJobStatus
   end
 
   def record_job_finished
-    job_scope.update_all(finished_at: Time.current, status: 'finished')
+    job_scope.update_all(finished_at: Time.now, status: 'finished')
+  end
+
+  def update_job_data(job_data)
+    job_scope.update_all(job_data: job_data)
   end
 
   def job_scope
