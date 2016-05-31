@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.files = Dir["lib/**/*.rb"]
   s.test_files = Dir["test/**/*"]
-  s.add_dependency 'que', '0.9.0'
+  s.add_dependency 'que', '0.11.5'
   s.add_dependency 'activerecord', '> 0'
   s.add_dependency 'pg', '> 0'
 end

@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    tanga_que_extensions (0.0.4)
+    tanga_que_extensions (0.0.6)
       activerecord (> 0)
       pg (> 0)
-      que (= 0.9.0)
+      que (= 0.11.5)
 
 GEM
   remote: https://rubygems.org/
@@ -26,9 +26,9 @@ GEM
     builder (3.2.2)
     i18n (0.7.0)
     json (1.8.3)
-    minitest (5.8.4)
+    minitest (5.9.0)
     pg (0.18.4)
-    que (0.9.0)
+    que (0.11.5)
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
