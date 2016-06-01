@@ -24,7 +24,7 @@ class Que::PeriodicJob < Que::Job
     args['start_at'] = @end_at
     args['end_at']   = @end_at + self.class::INTERVAL
 
-    Que::Migrations.transaction do
+    Que.transaction do
       self.class.enqueue(args, run_at: @run_again_at + self.class::DELAY)
       destroy
     end
