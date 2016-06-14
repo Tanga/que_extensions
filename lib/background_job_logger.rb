@@ -11,7 +11,7 @@ module Que
       current_memory = Que::MemoryInfo.rss
       memory_taken   = current_memory - start_memory
 
-      TangaServices.logger.info(
+      TN.logger.info(
         service:          'que_jobs',
         status:           'job_finished',
         end_time:         end_time,
