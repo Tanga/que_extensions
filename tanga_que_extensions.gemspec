@@ -13,4 +13,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'que', '0.11.5'
   s.add_dependency 'activerecord', '> 0'
   s.add_dependency 'pg', '> 0'
+  s.add_dependency 'dino_utils', '>= 0.1.16'
+  s.add_dependency 'airbrake', '>= 0'
 end

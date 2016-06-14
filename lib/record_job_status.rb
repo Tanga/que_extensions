@@ -18,7 +18,7 @@ module Que::RecordJobStatus
   end
 
   def record_job_failed(e)
-    TangaServices.logger.error(service: 'que_jobs', status: 'error', error: e.to_json)
+    TN.logger.error(service: 'que_jobs', status: 'error', error: e.to_json)
     job_scope.update_all(status: 'failed', error: { message: e.message, caller: e.backtrace, args: e.as_json })
   end
 
