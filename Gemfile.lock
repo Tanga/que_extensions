@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tanga_que_extensions (0.0.8)
+    tanga_que_extensions (0.0.9)
       activerecord (> 0)
       airbrake
       dino_utils (>= 0.1.16)
