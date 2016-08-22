@@ -1,6 +1,7 @@
 class Que::PeriodicJob < Que::Job
   INTERVAL = 60
   DELAY = 0
+  RESET_INTERVALS = false
   attr_reader :start_at, :end_at, :run_again_at, :time_range
   def _run
     args = attrs[:args].first || {}
@@ -15,6 +16,8 @@ class Que::PeriodicJob < Que::Job
       @start_at = Time.current
       @end_at   = @start_at + self.class::INTERVAL
     end
+
+    @end_at = Time.now if self.class::RESET_INTERVALS
 
     @run_again_at = @end_at
     @time_range = @start_at...@end_at
