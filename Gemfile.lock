@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tanga_que_extensions (0.0.8)
+    tanga_que_extensions (0.0.14)
       activerecord (> 0)
       airbrake
       dino_utils (>= 0.1.16)
@@ -11,30 +11,31 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (4.2.6)
-      activesupport (= 4.2.6)
+    activemodel (4.2.7.1)
+      activesupport (= 4.2.7.1)
       builder (~> 3.1)
-    activerecord (4.2.6)
-      activemodel (= 4.2.6)
-      activesupport (= 4.2.6)
+    activerecord (4.2.7.1)
+      activemodel (= 4.2.7.1)
+      activesupport (= 4.2.7.1)
       arel (~> 6.0)
-    activesupport (4.2.6)
+    activesupport (4.2.7.1)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    airbrake (4.3.3)
-      builder
-      multi_json
+    airbrake (5.4.4)
+      airbrake-ruby (~> 1.4)
+    airbrake-ruby (1.4.4)
     arel (6.0.3)
     builder (3.2.2)
-    dino_utils (0.1.16)
-      activerecord (>= 3)
+    dino_utils (0.1.19)
+      activerecord (~> 4)
       faraday
       faraday-conductivity
       faraday_middleware
       hashie
+      net-http-persistent
       pg
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
@@ -46,8 +47,8 @@ GEM
     i18n (0.7.0)
     json (1.8.3)
     minitest (5.9.0)
-    multi_json (1.12.1)
     multipart-post (2.0.0)
+    net-http-persistent (2.9.4)
     pg (0.18.4)
     que (0.11.5)
     thread_safe (0.3.5)
