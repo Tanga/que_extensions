@@ -13,11 +13,11 @@ class Que::PeriodicJob < Que::Job
       @start_at = Time.parse(start_at)
       @end_at   = Time.parse(end_at)
     else
-      @start_at = Time.current
-      @end_at   = @start_at + self.class::INTERVAL
+      @start_at = Time.current - self.class::INTERVAL
+      @end_at   = Time.current
     end
 
-    @end_at = Time.now if self.class::RESET_INTERVALS
+    @end_at = Time.current if self.class::RESET_INTERVALS
 
     @run_again_at = @end_at
     @time_range = @start_at...@end_at
