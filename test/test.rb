@@ -8,12 +8,15 @@ require_relative '../lib/tanga_que_extensions'
 ActiveRecord::Base.establish_connection 'postgres://localhost/tanga_dev'
 Que.connection = ActiveRecord
 
+ActiveRecord::Base.logger = Logger.new($stdout)
+
 #p QueJobStatus.first
 #p QueJob.first
 
 class J < Que::Job
   prepend Que::RecordJobStatus
   prepend Que::NotifyDevOnFailures
+  include Que::PreventDuplicates
 
   class Ack < StandardError
     def initialize(message, args)
@@ -41,6 +44,11 @@ Que.mode = :async
 
 loop do
   J.enqueue({foo: 1, joe: 'args'})
+  J.enqueue({foo: 1, joe: 'args'})
+  #J.enqueue({foo: 1, joe: 'args'})
+  #J.enqueue({foo: 1, joe: 'args'})
+  #J.enqueue({foo: 1, joe: 'args'})
+  #J.enqueue({foo: 1, joe: 'args'})
   sleep 1
 end
 
