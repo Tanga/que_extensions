@@ -20,7 +20,6 @@ module Que
 
         md5 = Digest::MD5.hexdigest("#{job_class || to_s}#{args.to_json}")
         if ::QueJob.where("md5(job_class || args::text) = ?", md5).exists?
-          puts "preventing dupes"
           return
         else
           super
