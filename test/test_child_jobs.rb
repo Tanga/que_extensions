@@ -12,8 +12,7 @@ Que.connection = ActiveRecord
 
 ActiveRecord::Base.logger = Logger.new($stdout)
 
-class Child < Que::Job
-  prepend Que::ChildJob
+class Child < Que::ChildJob
   prepend Que::RecordJobStatus
   prepend Que::RecordJobStatusToParentJob
 
