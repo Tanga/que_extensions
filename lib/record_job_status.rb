@@ -3,6 +3,12 @@ module Que::RecordJobStatus
     @job_id || 0
   end
 
+  def parent_job_id
+    @attrs['args'].first['parent_job_id'] || nil
+  rescue
+    nil
+  end
+
   def run(args={})
     @job_id = self.attrs['job_id']
     record_job_started
@@ -24,7 +30,18 @@ module Que::RecordJobStatus
 
   def record_job_started
     QueJobStatus.where(job_id: job_id).delete_all
-    QueJobStatus.create!(job_id: job_id, attrs: attrs, status: 'executing')
+
+    hash = {
+      job_id: job_id,
+      attrs: attrs,
+      status: 'executing'
+    }
+
+    if QueJobStatus.connection.column_exists?(:que_job_status, :parent_job_id)
+      hash[:parent_job_id] = parent_job_id
+    end
+
+    QueJobStatus.create!(hash)
   end
 
   def record_job_finished
