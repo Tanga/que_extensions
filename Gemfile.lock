@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tanga_que_extensions (0.0.16)
+    tanga_que_extensions (0.0.21)
       activerecord (> 0)
       airbrake
       dino_utils (>= 0.1.16)
@@ -27,7 +27,7 @@ GEM
     airbrake (5.6.1)
       airbrake-ruby (~> 1.6)
     airbrake-ruby (1.6.0)
-    arel (6.0.3)
+    arel (6.0.4)
     builder (3.2.2)
     dino_utils (0.1.21)
       activerecord (~> 4)
@@ -46,7 +46,7 @@ GEM
     hashie (3.4.6)
     i18n (0.7.0)
     json (1.8.3)
-    minitest (5.9.1)
+    minitest (5.10.1)
     multipart-post (2.0.0)
     net-http-persistent (2.9.4)
     pg (0.19.0)
@@ -62,4 +62,4 @@ DEPENDENCIES
   tanga_que_extensions!
 
 BUNDLED WITH
-   1.12.5
+   1.14.3

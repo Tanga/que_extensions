@@ -10,7 +10,7 @@ module Que::RecordJobStatus
   end
 
   def run(args={})
-    @job_id = self.attrs['job_id']
+    @job_id = self.attrs.symbolize_keys[:job_id]
     record_job_started
     super if defined?(super)
     record_job_finished
