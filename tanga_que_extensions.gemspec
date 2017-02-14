@@ -2,7 +2,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "tanga_que_extensions"
-  s.version     = "0.0.21"
+  s.version     = "0.0.22"
   s.authors     = ["Joe Van Dyk"]
   s.email       = ["joe@tanga.com"]
   s.homepage    = "https://www.tanga.com"
