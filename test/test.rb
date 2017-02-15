@@ -40,16 +40,16 @@ class J < Que::Job
 end
 
 Que.logger = Logger.new(STDOUT)
+
+J.enqueue({foo: 1, joe: 'args'})
+QueJob.last.run
+
 Que.mode = :async
 
 loop do
   J.enqueue({foo: 1, joe: 'args'})
   J.enqueue({foo: 1, joe: 'args'})
-  #J.enqueue({foo: 1, joe: 'args'})
-  #J.enqueue({foo: 1, joe: 'args'})
-  #J.enqueue({foo: 1, joe: 'args'})
-  #J.enqueue({foo: 1, joe: 'args'})
+
   sleep 1
 end
 
-gets
