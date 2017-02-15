@@ -5,13 +5,14 @@ require 'logger'
 require 'active_record'
 require_relative '../lib/tanga_que_extensions'
 
-ActiveRecord::Base.establish_connection 'postgres://localhost/tanga_dev'
+ActiveRecord::Base.establish_connection 'postgres://localhost/channel_advisor_dev'
 Que.connection = ActiveRecord
 
-ActiveRecord::Base.logger = Logger.new($stdout)
+QueJob.delete_all
+QueJobStatus.delete_all
 
-#p QueJobStatus.first
-#p QueJob.first
+# ActiveRecord::Base.logger = Logger.new($stdout)
+# Que.logger = Logger.new(STDOUT)
 
 class J < Que::Job
   prepend Que::RecordJobStatus
@@ -39,12 +40,13 @@ class J < Que::Job
   end
 end
 
-Que.logger = Logger.new(STDOUT)
 
-J.enqueue({foo: 1, joe: 'args'})
-QueJob.last.run
+# Running job manually and getting status
+job_id = J.enqueue({foo: 4, joe: 'args'}).attrs['job_id']
+QueJob.find(job_id).run
+puts QueJobStatus.raw_job_data(job_id)
 
-Que.mode = :async
+Que.mode  = :async
 
 loop do
   J.enqueue({foo: 1, joe: 'args'})
