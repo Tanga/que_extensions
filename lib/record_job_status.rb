@@ -4,9 +4,7 @@ module Que::RecordJobStatus
   end
 
   def parent_job_id
-    @attrs['args'].first['parent_job_id'] || nil
-  rescue
-    nil
+    QueJob.find(job_id).parent_job_id
   end
 
   def run(args={})
