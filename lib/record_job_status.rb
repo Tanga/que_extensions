@@ -4,8 +4,11 @@ module Que::RecordJobStatus
   end
 
   def parent_job_id
-    QueJob.find(job_id).parent_job_id
+    @attrs['args'].first['parent_job_id'] || nil
+  rescue
+    nil
   end
+
 
   def run(args={})
     @job_id = self.attrs.symbolize_keys[:job_id]
