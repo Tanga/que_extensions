@@ -8,9 +8,9 @@ module Que
         if parent_job_id.present?
           QueJob.where(job_id: job_data.attrs['job_id']).update_all(parent_job_id: parent_job_id)
         end
-      end
 
-      job_data
+        job_data
+      end
     end
   end
 end
