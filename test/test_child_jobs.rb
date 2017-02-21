@@ -12,6 +12,14 @@ Que.connection = ActiveRecord
 
 ActiveRecord::Base.logger = Logger.new($stdout)
 
+class OnFinish < Que::Job
+  prepend Que::RecordJobStatus
+
+  def run(args)
+    puts args.inspect
+  end
+end
+
 class Child < Que::ChildJob
   prepend Que::RecordJobStatus
   prepend Que::RecordJobStatusToParentJob
@@ -31,6 +39,10 @@ class Parent < Que::Job
       Child.enqueue(i: i, parent_job_id: job_id)
     end
   end
+
+  def on_finished_job_class
+    OnFinish.to_s
+  end
 end
 
 QueJob.delete_all
@@ -40,3 +52,5 @@ Que.mode = :async
 
 Parent.enqueue
 gets
+Que.mode = :none
+binding.pry
